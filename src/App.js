@@ -7,23 +7,15 @@ class App extends Component{
     constructor(props){
       super(props);
       this.state = {
-        usuario: []
+        usuario: "",
+        senha: ""
       }
-
-      this.gravar = this.gravar.bind(this);
-      this.listar = this.listar.bind(this);
+      this.logar = this.logar.bind(this);
+    this.deslogar = this.deslogar.bind(this);
+     this.cadastrar = this.cadastrar.bind(this);
+      //this.listar = this.listar.bind(this);
     }
-
-     gravar(){
-        firebase.collection('usuario').add({
-        nome: 'Felipe',
-        sobrenome: 'Vidal'
-      }).then(()=>{
-        console.log("Gravou!");
-      }).catch((erro)=>{
-        console.log("erro: " + erro);
-      });
-    }
+/*
 
     listar(){
       firebase.collection('usuario').get()
@@ -41,7 +33,6 @@ class App extends Component{
       });
     }
 
-
     componentDidMount(){
       firebase.collection('usuario').onSnapshot((snapshot)=>{
           let lista = [];
@@ -56,35 +47,67 @@ class App extends Component{
           this.setState({usuario: lista});
       });
     }
+    */
+
+    async cadastrar(){
+    await firebase.auth().createUserWithEmailAndPassword(this.state.usuario, this.state.senha)
+    .then(()=>{
+      console.log("Cadastrou!");
+    })
+    .catch((error) => {
+      if(error.code === "auth/weak-password"){
+        alert("Senha fraca!")
+      }
+      else if(error.code === "auth/email-already-in-use"){
+        alert("Email já está sendo usado!")
+      }
+
+    });
+    }
+
+    async logar(){
+      await firebase.auth().signInWithEmailAndPassword(this.state.usuario, this.state.senha);
+    }
+
+    async deslogar(){
+      await firebase.auth().signOut();
+    }
+
+    componentDidMount(){
+     firebase.auth().onAuthStateChanged((user)=>{
+      
+      if(user) {
+        this.setState({mensagem: "Você está logado"})
+      }
+    });
+  } 
+     
+     
 
     render(){
       return(
         <div>
 
-          <h1>Firestore</h1>
 
-          <button onClick={this.gravar}> Gravar </button>
-          <br/><br/>
-          <button onClick={this.listar}> Listar </button>
-          <br/><br/>
+        <h1> Tela de login : {this.state.mensagem} </h1>
 
-          {
-            this.state.usuario.map((item)=>{
+      <input type="text" placeholder="Usuário" onChange= {(e)=> this.setState({usuario: e.target.value})} /> <br/>
+      <input type="password" placeholder="Senha" onChange= {(e)=> this.setState({senha: e.target.value})} /> <br/>
 
-              return (
-                <div>
-                    {item.nome} <br/>
-                </div>
-              )
+      <button onClick= {this.cadastrar}> Cadastrar</button>
+      <button onClick= {this.deslogar}> Deslogar </button>
+      <button onClick= {this.logar}> Logar </button>
 
-            })
-          }
+      <br/>
+
+      {this.state.usuario + ':' + this.state.senha}
 
         </div>
       )
     }
 
 }
+
 
 
 
