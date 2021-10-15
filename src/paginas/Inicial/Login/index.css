@@ -1,0 +1,16 @@
+.center{
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.flex-end{
+    justify-content: flex-end !important;
+}
+
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+.btn-outline{
+    outline: 1px solid rgba(95, 95, 95, 0.316) !important;
+}
