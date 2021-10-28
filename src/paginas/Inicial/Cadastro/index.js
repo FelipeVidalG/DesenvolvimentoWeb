@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import DateInput from "../../../Util/date-mask";
 import 'bulma/css/bulma.min.css'
 import './index.css'
+import { Logo } from "../../../componentes/Logo";
 
 import fb from '../../../config/Firebase'
 
@@ -22,7 +23,12 @@ const Cadastro = () => {
   }
 
   return (
-    <div>
+      <div className="flex">
+        <aside>
+          <div>
+            <Logo />
+          </div>
+        </aside>
       <section className="section center w-620">
         <div className="container">
           <div className="card">
