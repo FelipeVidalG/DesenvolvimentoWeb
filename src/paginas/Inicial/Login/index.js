@@ -44,7 +44,6 @@ function Login() {
           <img src={Festa2} alt="Festa" />
         </div>
       </div>
-      <div className="footer"></div>
     </div>
   )
 

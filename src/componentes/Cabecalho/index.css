@@ -10,7 +10,9 @@
     color: black;
 }
 
-.logo{
+.logoCabecalho{
     width: 4.75rem;
-    max-height: 4.75rem;
+    max-height: 4rem !important;
+
 }
+

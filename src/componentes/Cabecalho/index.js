@@ -10,7 +10,7 @@ function Cabecalho() {
             <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="#">
-    <img src={logoCabecalho} className="logo" alt="logo" />
+    <img src={logoCabecalho} className="logoCabecalho" alt="logo" />
     </a>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
