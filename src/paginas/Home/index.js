@@ -1,17 +1,15 @@
-import React from "react";
-import {Link} from 'react-router-dom';
+import React, {useContext} from "react";
 import Cabecalho from "../../componentes/Cabecalho";
 
+import {AuthContext} from '../../App'
 
 function Home(){
+    const {session, setSession} = useContext(AuthContext)
+
     return (
         <div>
             <Cabecalho/>
-            <h2>Home</h2>
-
-
-            <Link to="/sobre">Sobre</Link><br/>
-            <Link to="/contato">Contato</Link>
+            <h1>{session.uid}</h1>
         </div>
     )
 }

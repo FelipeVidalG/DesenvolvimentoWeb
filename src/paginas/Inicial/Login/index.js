@@ -1,23 +1,58 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import './index.css'
 
-import { auth, firebase } from '../../../config/Firebase'
+import { auth, firestore, firebase } from '../../../config/Firebase'
 import { Logo } from "../../../componentes/Logo";
 import GoogleIconImg from '../../../imagens/google-icon.svg'
 import Festa1 from '../../../imagens/festa1.jpg'
 import Festa2 from '../../../imagens/festa2.jpg'
 import { useHistory } from "react-router";
 
+import {AuthContext} from '../../../App'
+
 
 function Login() {
   const provider = new firebase.auth.GoogleAuthProvider()
   const history = useHistory()
+  const {session, setSession} = useContext(AuthContext)
+    
+
+  function createUser(rs){
+
+    const usuario = {
+      nome: rs.user.displayName,
+      email: rs.user.email
+    }
+
+    firestore.collection("usuarios").doc(rs.user.uid).set(usuario)
+
+    setSession({...usuario, uid: rs.user.uid})
+  }
+
+  function findUser(rs){
+
+    const usuario = firestore.collection("usuarios").doc(rs.user.uid);
+    usuario.get().then(doc =>{
+    
+      setSession({...doc.data(), uid: rs.user.uid})
+    
+    }).catch(err =>{console.log(err)})
+    
+  }
 
   async function logar() {
     await auth.signInWithPopup(provider)
-      .then((user) => {
-        if(user){
+      .then((rs) => {
+        
+        if(rs.additionalUserInfo.isNewUser){
+          createUser(rs);
+        }else{
+          findUser(rs)
+        }
+
+
+        if(rs.user){
           history.push("/home")
         }
       })
