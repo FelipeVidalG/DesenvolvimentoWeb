@@ -53,7 +53,7 @@ function Login() {
 
 
         if(rs.user){
-          history.push("/cadastro")
+          history.push("/home")
         }
       })
   }
