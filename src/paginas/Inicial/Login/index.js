@@ -13,9 +13,9 @@ import {AuthContext} from '../../../App'
 
 
 function Login() {
+  const {session, setSession} = useContext(AuthContext)
   const provider = new firebase.auth.GoogleAuthProvider()
   const history = useHistory()
-  const {session, setSession} = useContext(AuthContext)
     
 
   function createUser(rs){
@@ -53,7 +53,7 @@ function Login() {
 
 
         if(rs.user){
-          history.push("/home")
+          history.push("/cadastro")
         }
       })
   }
