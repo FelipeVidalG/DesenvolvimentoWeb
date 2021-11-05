@@ -75,8 +75,8 @@ const Cadastro = () => {
                   </div>
 
                   <div className="file is-info has-name column">
-                    <img src={imagemURL} width= '200' />
-                    <label className="file-label">
+                    <img src={imagemURL} width= '200' className="textCenter" />
+                    <label className="file-label textCenter">
                       <input className="file-input" type="file" name="resume" onChange={(e) => {enviaArquivo(e)}} />
                       <span className ="file-cta">
                       <span className ="file-label textCenter">
