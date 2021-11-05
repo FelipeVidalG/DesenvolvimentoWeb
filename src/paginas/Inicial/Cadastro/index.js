@@ -1,9 +1,14 @@
-import React, { useState, useContext } from "react";
+
+
+import React, { useState, useContext, useEffect } from "react";
 import DateInput from "../../../Util/date-mask";
-import 'bulma/css/bulma.min.css'
 import Cabecalho from "../../../componentes/Cabecalho";
+import {firebase} from "../../../config/Firebase";
+
+import usuarioDefault from '../../../imagens/usuario.jpg'
+
+import 'bulma/css/bulma.min.css'
 import './index.css'
-import {firebase, auth, database} from "../../../config/Firebase";
 
 import {AuthContext} from '../../../App'
 
@@ -22,6 +27,15 @@ const Cadastro = () => {
     className: "input date unstyled input-date-mask",
     onChange: dateState
   }
+
+   useEffect(()=>{
+    firebase.storage().ref("usuario").child(session.uid).getDownloadURL()
+      .then((url)=> {
+          setImagemURL(url)
+      }).catch(()=>{
+        setImagemURL(usuarioDefault)
+      })
+  })
 
   async function enviaArquivo(e){
       let arquivo = e.target.files[0];
@@ -74,9 +88,9 @@ const Cadastro = () => {
                     </div>
                   </div>
 
-                  <div className="file is-info has-name column">
-                    <img src={imagemURL} width= '200' />
-                    <label className="file-label">
+                  <div className="file is-info has-name column alinha">
+                    <img src={imagemURL} width= '200' className="imgDir" alt="img" />
+                    <label className="file-label textCenter">
                       <input className="file-input" type="file" name="resume" onChange={(e) => {enviaArquivo(e)}} />
                       <span className ="file-cta">
                       <span className ="file-label textCenter">
@@ -105,9 +119,3 @@ const Cadastro = () => {
 }
 
 export default Cadastro
-
-
-
-
-//<input className="input is-success" type="text" placeholder="@NomeDeUsuario"/>
-//<p className="help is-success">This username is available</p>

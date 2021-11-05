@@ -23,13 +23,13 @@ function Cabecalho() {
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
-            <a className="navbar-item">
+            <Link className="navbar-item" to="/home">
               Tela inicial
-            </a>
+            </Link>
 
-            <a className="navbar-item">
+            <Link className="navbar-item" to='/cadastro'>
               Perfil
-            </a>
+            </Link>
 
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">
