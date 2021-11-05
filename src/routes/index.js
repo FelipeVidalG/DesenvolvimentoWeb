@@ -4,6 +4,7 @@ import Home from '../paginas/Home';
 import Contato from '../paginas/Contato';
 import Sobre from '../paginas/Sobre';
 import Login from '../paginas/Inicial/Login'
+import Cadastro from "../paginas/Inicial/Cadastro";
 
 
 
@@ -16,6 +17,7 @@ const Rotas = () => {
             <Route exact={true} path="/home" component={Home} />
             <Route exact={true} path="/sobre" component={Sobre} />
             <Route exact={true} path="/contato" component={Contato} />
+            <Route exact={true} path="/cadastro" component={Cadastro} />
 
         </BrowserRouter>
     )
