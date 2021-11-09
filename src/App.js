@@ -7,6 +7,7 @@ import Contato from './paginas/Contato';
 import Sobre from './paginas/Sobre';
 import Login from './paginas/Inicial/Login'
 import Cadastro from "./paginas/Inicial/Cadastro";
+import Invite from "./paginas/Invite";
 
 import './App.css';
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact={true} path="/sobre" component={Sobre} />
         <Route exact={true} path="/contato" component={Contato} />
         <Route exact={true} path="/cadastro" component={Cadastro} />
+        <Route exact={true} path="/invite/:id" component={Invite} />
       </AuthContext.Provider>
     </BrowserRouter>
   )

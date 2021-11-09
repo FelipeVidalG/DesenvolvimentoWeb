@@ -1,0 +1,36 @@
+
+.map{
+    margin: 0 auto;
+    margin-top:50px;
+    height: 600px;
+    max-width: 900px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-container{
+    width: 99.9%;
+    height: 99.9%;
+    margin-left: 1px;
+    margin-top: 1px;
+    border-radius: 8px;
+}
+
+
+.container-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    display: flex;
+}
+
+.container-select .label{
+    margin-right: 15px;
+    width: 80px;
+}
+
+.sel{
+    width: 200px;
+}
