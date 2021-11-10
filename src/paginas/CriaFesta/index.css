@@ -1,0 +1,54 @@
+.nome{
+    color: #FAB246;
+}
+
+.top{
+    margin-top: 40px !important;
+}
+
+.top2{
+    margin-top: 10px;
+}
+
+.left{
+    margin-left: 0px;
+    padding:0;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ml{
+    margin-left: 12px;
+}
+
+.mr{
+    margin-right: 12px;
+}
+
+.map2{
+    height: 467px;
+    max-width: 900px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.span-mr{
+    margin-right: 13px;
+}
+
+.w-input{
+    width: 455px;
+}
+
+.w-input2{
+    width: 455px;
+}
+
+.w-input3{
+    width: 455px;
+}

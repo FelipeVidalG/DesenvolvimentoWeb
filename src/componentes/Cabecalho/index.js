@@ -57,6 +57,7 @@ function Cabecalho() {
 
           <div className="navbar-end">
             <div className="navbar-item">
+              <Link className="button is-secondary margin-right" to="/festa/criar">Criar festa</Link>
             </div>
           </div>
         </div>

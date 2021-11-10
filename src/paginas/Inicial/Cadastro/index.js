@@ -53,7 +53,6 @@ const Cadastro = () => {
   return (
     <div className="flex">
       <Cabecalho />
-      {session.uid}
       <section className="section w-620">
         <div className="container">
           <div className="card">

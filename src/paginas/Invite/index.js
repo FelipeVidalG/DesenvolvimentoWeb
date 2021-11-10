@@ -7,7 +7,6 @@ function Invite(){
     const params = useParams()
     const festaId = params.id
 
-    console.log(festaId);
     return(
         <div>
 

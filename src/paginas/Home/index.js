@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from "react";
 import Cabecalho from "../../componentes/Cabecalho";
-import { auth, firestore, firebase } from '../../config/Firebase'
+import { firestore } from '../../config/Firebase'
 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 
@@ -10,7 +10,6 @@ import { AuthContext } from '../../App'
 import 'bulma/css/bulma.min.css'
 
 import './index.css'
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 function ChangeView({ center }) {
@@ -89,7 +88,6 @@ function Home() {
                 }
             })
         }
-        console.log(arrFestasFinal, "FINAL");
         setFestas(arrFestasFinal)
 
         const firstFesta = arrFestasFinal[0];
