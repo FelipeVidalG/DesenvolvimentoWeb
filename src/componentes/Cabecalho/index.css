@@ -13,9 +13,9 @@
 .logoCabecalho{
     width: 4.75rem;
     max-height: 4rem !important;
+
 }
 
-.margin-right{
-    margin-right: 40px;
+.botaocriar{
+    margin-right: 4rem;
 }
-

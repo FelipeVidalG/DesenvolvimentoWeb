@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import 'bulma/css/bulma.min.css'
 import './index.css'
@@ -55,7 +54,7 @@ function Cabecalho() {
             </div>
           </div>
 
-          <div className="navbar-end">
+          <div className="navbar-end botaocriar">
             <div className="navbar-item">
               <Link className="button is-secondary margin-right" to="/festa/criar">Criar festa</Link>
             </div>

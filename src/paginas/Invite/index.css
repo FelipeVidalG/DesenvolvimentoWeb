@@ -1,0 +1,32 @@
+.fundo{
+    height: 100vh;
+    background-color: rgb(255 247 221);
+}
+
+.none{
+    display: none;
+}
+
+.colorirErro{
+    color: red !important;
+}
+
+.black{
+    color: black;
+}
+.colorir{
+    color: rgb(0, 141, 82) !important;
+}
+
+.botao{
+    margin-left: 20px;
+}
+
+.card{
+    max-width: 45% !important;
+    margin: 0 auto;
+}
+
+.card30{
+    max-width: 30% !important;
+}

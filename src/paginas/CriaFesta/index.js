@@ -42,24 +42,24 @@ function CriarFesta() {
         })
     }, [])
 
-    function mudaLatitude(e){
+    function mudaLatitude(e) {
         const txtLongitude = document.querySelector(".txtLongitude")
         const longitude = txtLongitude.value
         const latitude = e.target.value
 
-        if(longitude.length > 8 && latitude.length > 8){
+        if (longitude.length > 8 && latitude.length > 8) {
             setLatitude(latitude)
             setLongitude(longitude)
         }
 
     }
 
-    function mudaLongitude(e){
+    function mudaLongitude(e) {
         const txtLongitude = document.querySelector(".txtLatitude")
         const longitude = txtLongitude.value
         const latitude = e.target.value
 
-        if(longitude.length > 8 && latitude.length > 8){
+        if (longitude.length > 8 && latitude.length > 8) {
             setLatitude(latitude)
             setLongitude(longitude)
         }
@@ -70,8 +70,8 @@ function CriarFesta() {
         <div>
             <Cabecalho />
             <section className="section w-620">
-                <div className="container">
-                    <div className="card">
+                <div className="container mtneg">
+                    <div className="card card-criarfesta">
                         <header className="card-header">
                             <p className="card-header-title title is-4">
                                 Olá &nbsp; <span className="nome">{!usuario ? "Usuario" : usuario.nome} &nbsp;</span> Crie sua festa
@@ -85,19 +85,27 @@ function CriarFesta() {
                                             <label className="label">Seu email</label>
                                             <input className="input is-primary" type="text" disabled value={!usuario ? "Exemplo@gmail.com" : usuario.email} />
                                         </div>
+                                        <label className="label top2">Cidade</label>
+                                        <div class="select is-primary">
+                                            <select>
+                                                <option value="curitiba">Curitiba</option>
+                                                <option value="colombo">Colombo</option>
+                                                <option value="sao-jose-pinhais">São José dos Pinhais</option>
+                                            </select>
+                                        </div>
 
                                         <label className="label top ">Localização da festa</label>
-                                        <div className="w-input left flex">
+                                        <div className="w-input left dFlex">
                                             <span className="span-mr">Latitude</span>
-                                            <input className="input is-primary ml txtLatitude" maxLength="11" onChange={e => {mudaLatitude(e)}} type="text" />
+                                            <input className="input is-primary ml txtLatitude" maxLength="11" onChange={e => { mudaLatitude(e) }} type="text" />
                                         </div>
-                                        <div className=" w-input left top flex">
+                                        <div className=" w-input left top dFlex">
                                             <span>Longitude</span>
-                                            <input className="input is-primary ml txtLongitude" maxLength="11" onChange={e => {mudaLongitude(e)}} type="text" />
+                                            <input className="input is-primary ml txtLongitude" maxLength="11" onChange={e => { mudaLongitude(e) }} type="text" />
                                         </div>
                                         <div className="top field w-input2 mt-3">
                                             <label className="label">Capacidade de pessoas</label>
-                                            <div className="flex">
+                                            <div className="dFlex">
                                                 <input className="input is-primary" type="text" />
                                             </div>
                                         </div>

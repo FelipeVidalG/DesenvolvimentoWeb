@@ -15,7 +15,7 @@
     padding:0;
 }
 
-.flex{
+.dFlex{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@
 }
 
 .map2{
-    height: 467px;
+    height: 549px;
     max-width: 900px;
     border: 1px solid black;
     border-radius: 8px;
@@ -51,4 +51,12 @@
 
 .w-input3{
     width: 455px;
+}
+
+.card-criarfesta{
+    max-width: 75rem !important;
+}
+
+.mtneg{
+    margin-top: -37px;
 }
