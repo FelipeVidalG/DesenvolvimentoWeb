@@ -3,7 +3,8 @@ import { Redirect, useHistory, useParams } from 'react-router';
 import Cabecalho from "../../componentes/Cabecalho";
 import qrcode from "../../imagens/qrcode.png"
 import festaquadrada from "../../imagens/festaquadrada.jpg"
-import { firestore } from '../../config/Firebase'
+import UsuarioPadrao from '../../imagens/usuario.jpg'
+import { firestore, firebase } from '../../config/Firebase'
 
 import './index.css'
 
@@ -14,6 +15,7 @@ function Invite() {
     const [img, setImg] = useState(festaquadrada)
     const [conv, setConv] = useState()
     const [host, setHost] = useState()
+    const [imguser, setImguser] = useState()
     const redirect = useHistory()
 
 
@@ -29,11 +31,14 @@ function Invite() {
                     const dadosUser = user.data()
                     setHost(dadosUser.nome)
                 })
+                const imgUser = firebase.storage().ref("usuario").child(userId).getDownloadURL()
+                    .then((url) => {
+                        console.log(url);
+                        setImguser(url)
+                    }).catch(() => {
+                        setImguser(UsuarioPadrao)
+                    });
             })
-
-
-
-
     }, [])
 
     function aceitarConvite() {
@@ -49,9 +54,9 @@ function Invite() {
         const textErro = document.querySelector(".textErro")
         textErro.classList.remove("none")
         botoes.style.display = "none"
-        setInterval(()=>{
+        setTimeout(() => {
             redirect.push("/home")
-        },5000)
+        }, 5000)
     }
 
     return (
@@ -60,10 +65,17 @@ function Invite() {
             <section className="section w-300">
                 <div className="container">
                     <div className="card card30">
-                        <header className="card-header">
-                            <p className="card-header-title title is-4">
-                                Convite
-                            </p>
+                        <header className="card-header noflex">
+                            <div className="end">
+                                <div>
+                                    <p className="card-header-title title is-4">
+                                        Convite
+                                    </p>
+                                </div>
+                                <div>
+                                    <img className="imguser" src={imguser} alt=""></img>
+                                </div>
+                            </div>
                         </header>
                         <div className="card-content">
                             <div className="content">
@@ -82,10 +94,10 @@ function Invite() {
                                     </div>
                                 </div>
                                 <div className="none text">
-                                    <h5 className="colorir">Agora é so escanear o QrCode na entrada da festa e aproveitar.<br />Tenha uma boa festa! </h5>
+                                    <h5 className="colorir">Agora é so escanear o QrCode na entrada e aproveitar.<br />Tenha uma boa festa! </h5>
                                 </div>
                                 <div className="none textErro">
-                                    <h5 className="colorirErro">Infelizmente você recusou a festa do(a) {host}<br/><br/>
+                                    <h5 className="colorirErro">Infelizmente você recusou a festa do(a) {host}<br /><br />
                                         <span className="black">Iremos te
                                             redirecionar para a tela inicial em 5 segundos!
                                         </span>
@@ -94,19 +106,15 @@ function Invite() {
                             </div>
                         </div>
                     </div>
-
                     <div className="card card30">
                         <div className="card-content">
                             <div className="content">
-
                                 <div>
-                                    <img src={img}></img>
-
+                                    <img src={img} alt=""></img>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>

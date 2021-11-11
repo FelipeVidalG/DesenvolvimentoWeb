@@ -66,6 +66,52 @@ function CriarFesta() {
 
     }
 
+    async function criarFesta(){
+        const ddlCidade = document.querySelector(".ddlCidade")
+        const txtLatitude = document.querySelector(".txtLatitude")
+        const txtLongitude = document.querySelector(".txtLongitude")
+        const txtCapacidade = document.querySelector(".txtCapacidade")
+
+        let enviar = true;
+
+        if(ddlCidade.value === ""){
+            ddlCidade.classList.add("is-danger")
+            enviar = false
+        }
+        if(txtLatitude.value === ""){
+            txtLatitude.classList.add("is-danger")
+            enviar = false
+        }
+        if(txtLongitude.value === ""){
+            txtLongitude.classList.add("is-danger")
+            enviar = false
+        }
+        if(txtCapacidade.value === "" || isNaN(txtCapacidade.value)){
+            txtCapacidade.classList.add("is-danger")
+            enviar = false
+        }
+
+        if (enviar){
+            const obj = { 
+                capacidade: txtCapacidade.value, 
+                cidade: ddlCidade.value,
+                host: session.uid,
+                latitude: txtLatitude.value,
+                longitude: txtLongitude.value
+            }
+
+            await firestore.collection("festa").doc().set(obj)
+        }
+    }
+
+    function tiraDanger(e){
+        const elm = e.target
+
+        if (elm.classList.contains("is-danger")){
+            elm.classList.remove("is-danger")
+        }
+    }
+
     return (
         <div>
             <Cabecalho />
@@ -87,7 +133,7 @@ function CriarFesta() {
                                         </div>
                                         <label className="label top2">Cidade</label>
                                         <div class="select is-primary">
-                                            <select>
+                                            <select className="ddlCidade" onChange={tiraDanger}>
                                                 <option value="curitiba">Curitiba</option>
                                                 <option value="colombo">Colombo</option>
                                                 <option value="sao-jose-pinhais">São José dos Pinhais</option>
@@ -97,22 +143,22 @@ function CriarFesta() {
                                         <label className="label top ">Localização da festa</label>
                                         <div className="w-input left dFlex">
                                             <span className="span-mr">Latitude</span>
-                                            <input className="input is-primary ml txtLatitude" maxLength="11" onChange={e => { mudaLatitude(e) }} type="text" />
+                                            <input className="input is-primary ml txtLatitude" maxLength="11" onChange={e => { mudaLatitude(e); tiraDanger(e) }} type="text" />
                                         </div>
                                         <div className=" w-input left top dFlex">
                                             <span>Longitude</span>
-                                            <input className="input is-primary ml txtLongitude" maxLength="11" onChange={e => { mudaLongitude(e) }} type="text" />
+                                            <input className="input is-primary ml txtLongitude " maxLength="11" onChange={e => { mudaLongitude(e) ; tiraDanger(e)}} type="text" />
                                         </div>
                                         <div className="top field w-input2 mt-3">
                                             <label className="label">Capacidade de pessoas</label>
                                             <div className="dFlex">
-                                                <input className="input is-primary" type="text" />
+                                                <input className="input is-primary txtCapacidade" onChange={tiraDanger} type="text" />
                                             </div>
                                         </div>
                                         <div className="is-justify-content-space-between">
                                             <div className="field is-grouped mt-5 flex-end">
                                                 <div className="control">
-                                                    <button className="button is-primary">Criar</button>
+                                                    <button className="button is-primary" onClick={criarFesta}>Criar</button>
                                                 </div>
                                             </div>
                                         </div>

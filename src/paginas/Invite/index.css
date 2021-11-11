@@ -30,3 +30,23 @@
 .card30{
     max-width: 30% !important;
 }
+
+.end{
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.noflex{
+    display: block !important;
+}
+
+.imguser{
+    margin-top: 10px;
+    width: 54px;
+    margin-right: 28px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    box-shadow: 1px 1px 10px -8px black;
+}
+
